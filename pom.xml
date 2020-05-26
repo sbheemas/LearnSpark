@@ -11,7 +11,7 @@
         <encoding>UTF-8</encoding>
         <scala.tools.version>2.11</scala.tools.version>
         <scala.version>2.11.8</scala.version>
-        <spark.version>2.3.1</spark.version>
+        <spark.version>2.3.3</spark.version>
         <kudu.version>1.4.0</kudu.version>
     </properties>
 
