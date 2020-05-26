@@ -16,6 +16,8 @@ object AccumulatorDemo {
 
 
     rdd1.flatMap ( x => x.split(" ")).foreach(x => acc.add(1))
+
+    println("Accumulator")
     println(acc.value)
     //longAccDemo(sc)
 
