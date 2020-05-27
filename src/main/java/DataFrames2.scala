@@ -8,6 +8,20 @@ object DataFrames2 {
     val sparkSession = SparkSession.builder().master("local").appName("Hello World").getOrCreate()
     val sc = sparkSession.sparkContext
 
+    //Chapter 2 examples
+
+    val myRange = sparkSession.range(1000).toDF("number")
+
+    val flightData2015 = sparkSession.read.option("inferSchema", "true").option("header", "true").csv("data/flight-data/csv/2015-summary.csv")
+
+    //Check how Spark infers the schema
+
+    flightData2015.printSchema()
+
+    //Explain plan
+
+    flightData2015.sort("count").explain()
+
     val inputRDD = sc.textFile("D:\\UPSKILL\\HADOOP-MD\\spark_progs\\SparkScala1-master\\student.csv")
     //val schemaString = "id,name,gender,subject,marks"
     //val schema = StructType(schemaString.split(",").map(fieldName => StructField(fieldName, StringType, true)))

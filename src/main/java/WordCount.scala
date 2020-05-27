@@ -2,8 +2,13 @@ import org.apache.spark.sql.SparkSession
 
 object WordCount {
   def main(args: Array[String]): Unit = {
-    val sparkSession = SparkSession.builder().master("local").appName("Hello World").getOrCreate()
-    val sc = sparkSession.sparkContext
+    //val sparkSession = SparkSession.builder().master("local").appName("Hello World").getOrCreate()
+
+    val sparkSession = SparkSession.builder().appName("Test").master("local").getOrCreate()
+
+
+      val sc = sparkSession.sparkContext
+
     val inputRdd = sc.textFile("D:\\dataset\\inputfile.txt")
     val wordRdd = inputRdd.flatMap(line=>line.split(" "))
     val pairRdd = wordRdd.map(word => (word,1)).reduceByKey((x,y) => x+y)
