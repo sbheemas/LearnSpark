@@ -10,6 +10,9 @@ object DataFrames2 {
 
     //Chapter 2 examples
 
+    val df = sparkSession.read.json("data/flight-data/json/2015-summary.json")
+
+
     val myRange = sparkSession.range(1000).toDF("number")
 
     val flightData2015 = sparkSession.read.option("inferSchema", "true").option("header", "true").csv("data/flight-data/csv/2015-summary.csv")
