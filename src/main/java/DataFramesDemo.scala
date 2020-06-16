@@ -1,4 +1,5 @@
 import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.functions._
 
 object DataFramesDemo {
   def main(args: Array[String]): Unit = {
@@ -32,6 +33,8 @@ object DataFramesDemo {
     df3.filter($"name" === "Preeti").show
     df3.filter($"name" =!= "Preeti").show
     df3.select(df3.col("name")).show
+    df3.select(df3.col("name")).show
+    df3.select(expr("name"))
 
   }
 //  case classes are like regular classes except that they are immutable by default. There is no need to use

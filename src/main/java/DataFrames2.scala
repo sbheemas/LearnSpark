@@ -1,6 +1,8 @@
 import org.apache.spark.{SparkConf, SparkContext}
 import org.apache.spark.sql.types.{IntegerType, StringType, StructField, StructType}
 import org.apache.spark.sql.{Row, SparkSession}
+import org.apache.spark.sql.functions.lit
+import org.apache.spark.sql._
 
 object DataFrames2 {
   def main(args: Array[String]): Unit = {
@@ -41,6 +43,7 @@ object DataFrames2 {
 
     val studentDF = sparkSession.createDataFrame(studentRowRdd, schema)
     studentDF.show()
+
 
     //studentDF.groupBy("gender").max("marks").show()
     studentDF.createOrReplaceGlobalTempView("student")

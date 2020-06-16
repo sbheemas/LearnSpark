@@ -34,13 +34,13 @@ object MapPartitionsDemo {
     return sum + number
   }
 
-  def sumPartition(numbers: Iterator[Int]): Iterator[Int] = {
-    var sum = 0
-    while (numbers.hasNext) {
-      sum = sum + numbers.next()
+    def sumPartition(numbers: Iterator[Int]): Iterator[Int] = {
+      var sum = 0
+      while (numbers.hasNext) {
+        sum = sum + numbers.next()
+      }
+      return Iterator(sum)
     }
-    return Iterator(sum)
-  }
 
   def highestInPartition(numbers:Iterator[Int]): Iterator[Int] = {
     var max = 0
