@@ -1,1 +1,10 @@
 # Project exclude paths
+**/*.iml
+
+# Remove target directories
+target/
+Flights/target/
+
+derby.log
+metastore_db/
+.idea/
