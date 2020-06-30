@@ -6,7 +6,7 @@ object PartAssignment {
     val sparkSession = SparkSession.builder().master("local").appName("Hello World").getOrCreate()
     val sc = sparkSession.sparkContext
 
-    val rdd1 = sc.textFile("C:\\Users\\Chandrika Sanjay\\Student2.txt")
+    val rdd1 = sc.textFile("data\\Student2.txt")
     val rdd2 = rdd1.map(splitMethod)
     val rdd3 = rdd2.partitionBy(new HashPartitioner(3))
     rdd3.mapPartitionsWithIndex((index, words)=>{for (word <- words) yield(word,index)}).foreach(println)

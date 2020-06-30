@@ -11,7 +11,7 @@ object DataFramesDemo {
     df1.show()
     df1.printSchema()
     */
-    val inputRdd = sc.textFile("D:\\UPSKILL\\HADOOP-MD\\spark_progs\\SparkScala1-master\\student.csv")
+    val inputRdd = sc.textFile("data\\student_without_header.csv")
     val studentRdd = inputRdd.map(line =>
       line.split(",")).map(x=>Student(x(0).toInt,x(1),x(2),x(3),x(4).toInt))
 

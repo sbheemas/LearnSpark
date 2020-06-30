@@ -35,7 +35,7 @@ object AccumulatorDemo {
     println("Collection Accumulator Demo")
     val collectionAcc = new CollectionAccumulator[String]
     sc.register(collectionAcc, "Strings having more than 5 letters")
-    val rdd4 = sc.textFile("D:\\UPSKILL\\HADOOP-MD\\spark_progs\\SparkScala1-master\\lockdown.txt")
+    val rdd4 = sc.textFile("data\\lockdown.txt")
 
     def collAdd(x:String) : Unit = { if ( x.length > 6 ) {collectionAcc.add(x) ; println(x)}}
     rdd4.flatMap(x => x.split(" ")).foreach( x => collAdd(x))
@@ -48,7 +48,7 @@ object AccumulatorDemo {
     //val longAcc = new LongAccumulator
     //sc.register(longAcc, "Count of words having more than 10 letters")
     val longAcc = sc.longAccumulator("Count of words having more than 5 letters")
-    val rdd4 = sc.textFile("D:\\UPSKILL\\HADOOP-MD\\spark_progs\\SparkScala1-master\\lockdown.txt")
+    val rdd4 = sc.textFile("data\\lockdown.txt")
 
     def collAdd(x:String) : Unit = { if ( x.length > 5 ) {longAcc.add(1) ; println(x)}}
     rdd4.flatMap(x => x.split(",")).foreach( x => collAdd(x))

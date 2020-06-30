@@ -8,7 +8,7 @@ object PartitioningDemo {
     val sparkSession = SparkSession.builder().master("local").appName("Hello World").getOrCreate()
     val sc = sparkSession.sparkContext
 
-    val rdd1 = sc.textFile("D:\\dataset\\inputfile.txt")
+    val rdd1 = sc.textFile("data\\inputfile.txt")
 
     val rdd2 = rdd1.flatMap(x => x.split(" ")).map(x => (x , 1)).partitionBy(new HashPartitioner(3))
     println(rdd2.getNumPartitions)
@@ -54,7 +54,7 @@ object PartitioningDemo {
 
     rdd6.mapPartitionsWithIndex((index,words) => {for (word <- words)yield(word,index)}).collect().foreach(println)
 
-    val rdd7 = sc.textFile("C:\\student.txt")
+    val rdd7 = sc.textFile("data\\student.txt")
 
     val rdd8 = rdd7.flatMap(x => x.split(" ")).map(x => (x,1)).partitionBy(new HashPartitioner(3))
     rdd8.persist()

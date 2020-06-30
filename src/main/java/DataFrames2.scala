@@ -27,7 +27,7 @@ object DataFrames2 {
 
     flightData2015.sort("count").explain()
 
-    val inputRDD = sc.textFile("D:\\UPSKILL\\HADOOP-MD\\spark_progs\\SparkScala1-master\\student.csv")
+    val inputRDD = sc.textFile("data\\student_without_header.csv")
     //val schemaString = "id,name,gender,subject,marks"
     //val schema = StructType(schemaString.split(",").map(fieldName => StructField(fieldName, StringType, true)))
 

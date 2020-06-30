@@ -46,7 +46,7 @@ object AggByKeyDemo {
 
       val acc_val = sc.longAccumulator("acc_val")
 
-      val rdd4 = sc.textFile("C:\\student.txt")
+      val rdd4 = sc.textFile("data\\student.txt")
 
       def filterMethod (x:String) : Boolean = { if (x.length < 5 ) {
         acc_val.add(1) ; return false } else return true;

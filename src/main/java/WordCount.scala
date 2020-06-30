@@ -9,12 +9,12 @@ object WordCount {
 
       val sc = sparkSession.sparkContext
 
-    val inputRdd = sc.textFile("D:\\dataset\\inputfile.txt")
+    val inputRdd = sc.textFile("data\\inputfile.txt")
     val wordRdd = inputRdd.flatMap(line=>line.split(" "))
     val pairRdd = wordRdd.map(word => (word,1)).reduceByKey((x,y) => x+y)
     pairRdd.collect().foreach(println)
 
-    val oddEvenRDD = sc.textFile("D:\\UPSKILL\\HADOOP-MD\\evenodd.txt")
+    val oddEvenRDD = sc.textFile("data\\evenodd.txt")
     val oddEvenRDD2 = oddEvenRDD.flatMap(line => line.split(",")).map(x => x.toInt)
     var even=0
     var odd = 0

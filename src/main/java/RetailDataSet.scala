@@ -4,7 +4,7 @@ object RetailDataSet {
   def main(args: Array[String]): Unit = {
     val spark = SparkSession.builder().master("local").appName("Retail-DataSet").getOrCreate()
 
-    val df = spark.read.option("header", "true").csv("C:\\retail")
+    val df = spark.read.option("header", "true").csv("data\\retail-data")
 
 
     df.show()

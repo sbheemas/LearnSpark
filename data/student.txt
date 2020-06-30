@@ -1,0 +1,2 @@
+1,Arjun,150000,Java$Hadoop$Spark,pf#500$epf#200,Davangere$Karnataka$500004
+2,Sandesh,13000,Science$Maths$Biology,pf#500,epf#400,Bangalore$Karnataka$500082
