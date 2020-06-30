@@ -10,10 +10,10 @@ object SparkScala1 {
     val sparkSession = SparkSession.builder().master("local").appName("Hello World").getOrCreate()
     val sc = sparkSession.sparkContext
 
-    val rdd1 = sc.textFile("D:\\UPSKILL\\HADOOP-MD\\spark_progs\\SparkScala1-master\\student.csv")
+    val rdd1 = sc.textFile("data\\student.csv")
 
     rdd1.collect().foreach(println)
-    println(rdd1.collect())
+    //println(rdd1.collect())
 
     val rdd2 = sc.parallelize(List(1,2,3,4,5,6))
     rdd2.collect().foreach(println)
