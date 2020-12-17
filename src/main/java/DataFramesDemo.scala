@@ -3,22 +3,27 @@ import org.apache.spark.sql.functions._
 
 object DataFramesDemo {
   def main(args: Array[String]): Unit = {
-    val sparkSession = SparkSession.builder().master("local").appName("Hello World").getOrCreate()
+    val sparkSession = SparkSession
+      .builder()
+      .master("local")
+      .appName("Hello World")
+      .getOrCreate()
     val sc = sparkSession.sparkContext
     import sparkSession.implicits._
     /*
     val df1 = sparkSession.read.csv("C:\\student_old.csv")
     df1.show()
     df1.printSchema()
-    */
+     */
     val inputRdd = sc.textFile("data\\student_without_header.csv")
-    val studentRdd = inputRdd.map(line =>
-      line.split(",")).map(x=>Student(x(0).toInt,x(1),x(2),x(3),x(4).toInt))
+    val studentRdd = inputRdd
+      .map(line => line.split(","))
+      .map(x => Student(x(0).toInt, x(1), x(2), x(3), x(4).toInt))
 
     val df2 = studentRdd.toDF()
     df2.createOrReplaceTempView("student")
     df2.groupBy("subject").max("marks").show()
-    val df3 = sparkSession.sql("select * from student order by marks desc" )
+    val df3 = sparkSession.sql("select * from student order by marks desc")
     df3.show()
 
     df3.write.bucketBy(3, "marks").sortBy("marks").saveAsTable("StudentHive")
@@ -41,5 +46,9 @@ object DataFramesDemo {
 //    new keyword to instantiate a case class. All the parameters listed in the case class are public and immutable
 //    by default.
 
-  case class Student(id:Int,name:String,gender:String,subject:String,marks:Int)
+  case class Student(id: Int,
+                     name: String,
+                     gender: String,
+                     subject: String,
+                     marks: Int)
 }

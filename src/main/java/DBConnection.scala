@@ -3,7 +3,6 @@ import org.apache.spark.sql.SparkSession
 import org.apache.spark.util.{CollectionAccumulator, LongAccumulator}
 import java.util.Properties
 
-
 object DBConnection {
   def main(args: Array[String]): Unit = {
     println("Testing the DB connection")
@@ -21,21 +20,19 @@ object DBConnection {
   }
 
   //FIXME
-   private def runMysql(spark: SparkSession) : Unit = {
-     val jdbcDF = spark.read
-       .format("jdbc")
-       .option("driver", "com.mysql.cj.jdbc.Driver")
-       .option("url", "jdbc:mysql://localhost:3306/retail")
-       .option("dbtable", "retail.invoice")
-       .option("user", "root")
-       .option("password", "welcome")
-       .load()
+  private def runMysql(spark: SparkSession): Unit = {
+    val jdbcDF = spark.read
+      .format("jdbc")
+      .option("driver", "com.mysql.cj.jdbc.Driver")
+      .option("url", "jdbc:mysql://localhost:3306/retail")
+      .option("dbtable", "retail.invoice")
+      .option("user", "root")
+      .option("password", "welcome")
+      .load()
 
-       jdbcDF.show()
-       val jdbcDF2 = jdbcDF.where("quantity > 200")
-       jdbcDF2.show()
-
-
+    jdbcDF.show()
+    val jdbcDF2 = jdbcDF.where("quantity > 200")
+    jdbcDF2.show()
 //       jdbcDF2.write
 //         .format("jdbc")
 //         .option("driver", "com.mysql.cj.jdbc.Driver")
@@ -51,5 +48,5 @@ object DBConnection {
 //     val jdbcDF2 = spark.read
 //       .jdbc("jdbc:mysql://localhost:3306/retail", "invoice", connectionProperties)
 
-   }
+  }
 }
